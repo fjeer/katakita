@@ -4,7 +4,7 @@
             <div class="flex items-center">
                 <div class="shrink-0">
                     <img class="size-8"
-                        src="img/katakita.png"
+                        src="{{ asset('img/katakita.png') }}"
                         alt="Logo Katakita" />
                 </div>
                 <div class="hidden md:block">
@@ -54,7 +54,7 @@
             <div class="-mr-2 flex md:hidden">
                 <!-- Mobile menu button -->
                 <button type="button" @click="isOpen = !isOpen"
-                    class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                    class="relative inline-flex items-center justify-center rounded-md bg-teal-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-teal-300 focus:ring-offset-2 focus:ring-offset-teal-800 focus:outline-hidden"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
