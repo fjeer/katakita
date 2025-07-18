@@ -2,10 +2,10 @@
 
 @php
     if ($current) {
-        $classes = 'bg-gray-900 text-white';
+        $classes = 'bg-teal-700 text-white';
         $ariaCurrent = 'page';
     } else {
-        $classes = 'text-gray-300 hover:bg-gray-700 hover:text-white';
+        $classes = 'text-gray-700 hover:bg-teal-600 hover:text-white';
     }
 @endphp
 
