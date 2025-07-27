@@ -1,6 +1,22 @@
 <x-layout :title="$title">
 
   <div class="my-5 py-4 px-4 mx-auto max-w-screen-xl lg:px-6 shadow-lg bg-white border border-gray-200">
+
+    <div class="mt-4 mb-8 max-w-md mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-gray-900  sm:text-5xl">BLOG</h2>
+      <p class="mt-2 text-lg/8 text-gray-600">Kata dari kita tulisan milik semua.</p>
+
+      @if (isset($currentAuthor) && $currentAuthor)
+                <p class="mt-2 text-md text-gray-700 dark:text-gray-200">
+                    Artikel oleh <span class="font-semibold">{{ $currentAuthor->username }}</span> (Total {{ $currentAuthor->posts->count() }} post)
+                </p>
+            @elseif (isset($currentCategory) && $currentCategory)
+                <p class="mt-2 text-md text-gray-700 dark:text-gray-200">
+                    Kategori: <span class="font-semibold">{{ $currentCategory->name }}</span>
+                </p>
+            @endif
+    </div>
+
     <form class="mb-8 max-w-md mx-auto">
       @if (request('category'))
         <input type="hidden" name="category" value="{{ request('category') }}">
@@ -19,7 +35,7 @@
         </div>
         <input type="search" id="default-search"
           class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search post title..." autofocus autocomplete="off" name="search" />
+          placeholder="Cari judul tulisan..." autofocus autocomplete="off" name="search" />
         <button type="submit"
           class="text-white absolute end-2.5 bottom-2.5 bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-500 font-medium rounded-lg text-sm px-4 py-2">Search</button>
       </div>
@@ -31,7 +47,7 @@
       @forelse ($blog as $post)
         <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <div class="flex justify-between items-center mb-5 text-gray-500">
-            <a href="/blog?category={{ $post->category->slug }}">
+            <a href="/category/{{ $post->category->slug }}">
               <span
                 class="bg-teal-100 text-gray-600 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                 {{ $post->category->name }}
@@ -40,12 +56,12 @@
             <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
           </div>
           <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
-              href="/blog/{{ $post['slug'] }}">{{ $post['title'] }}</a></h2>
+              href="/{{ $post['slug'] }}">{{ $post['title'] }}</a></h2>
           <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
             {{ Str::limit($post->body, 100) }}
           </p>
           <div class="flex justify-between items-center">
-            <a href="/blog?author={{ $post->author->username }}">
+            <a href="/author/{{ $post->author->username }}">
               <div class="flex items-center space-x-4">
                 <img class="w-7 h-7 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
@@ -55,7 +71,7 @@
                 </span>
               </div>
             </a>
-            <a href="/blog/{{ $post['slug'] }}"
+            <a href="/{{ $post['slug'] }}"
               class="inline-flex text-xs items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
               Read more
               <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -67,9 +83,9 @@
           </div>
         </article>
       @empty
-        <div>
+        <div class="col-span-full flex flex-col items-center justify-center text-center">
           <p class="font-semibold text-xl my-4">Article not found!</p>
-          <a href="/blog" class="block text-blue-500 hover:underline">&laquo; Back to all blog.</a>
+          <a href="/" class="block text-blue-500 hover:underline">&laquo; Back to all blog.</a>
         </div>
       @endforelse
     </div>

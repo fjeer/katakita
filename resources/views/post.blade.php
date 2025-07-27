@@ -5,7 +5,7 @@
       <article
         class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
 
-        <a href="/blog" class="font-medium text-xs text-blue-500 hover:underline">&laquo; Back to all blog.</a>
+        <a href="/" class="font-medium text-xs text-blue-500 hover:underline">&laquo; Back to all blog.</a>
 
         <header class="my-4 lg:mb-6 not-format">
           <address class="flex items-center mb-6 not-italic">
@@ -13,9 +13,9 @@
               <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                 alt="{{ $post->author->name }}">
               <div>
-                <a href="/blog?author={{ $post->author->username }}" rel="author"
+                <a href="/?author={{ $post->author->username }}" rel="author"
                   class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
-                <a href="/blog?category={{ $post->category->slug }}" class="block">
+                <a href="/?category={{ $post->category->slug }}" class="block">
                   <span
                     class="bg-teal-100 text-gray-600 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                     {{ $post->category->name }}

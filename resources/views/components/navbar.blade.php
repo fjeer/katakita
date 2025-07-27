@@ -3,15 +3,17 @@
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="shrink-0">
-                    <img class="size-8"
+                    <a href="/" class="">
+                    <img class="size-10 inline-block"
                         src="{{ asset('img/katakita.png') }}"
                         alt="Logo Katakita" />
+                    <img class="h-12 w-auto inline-block" 
+                        src="{{ asset('img/katakitajudul.png') }}" alt="">
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <x-nav-link href="/" :current="request()->is('/')">Home</x-nav-link>
-                        <x-nav-link href="/blog" :current="request()->is('blog')">Blog</x-nav-link>
-                        <x-nav-link href="/about" :current="request()->is('about')">About</x-nav-link>
+                        <x-nav-link href="/" :current="request()->is('/')">Blog</x-nav-link>
                         <x-nav-link href="/contact" :current="request()->is('contact')">Contact</x-nav-link>
                     </div>
                 </div>
