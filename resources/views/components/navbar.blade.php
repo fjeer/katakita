@@ -14,7 +14,7 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <x-nav-link href="/" :current="request()->is('/')">Blog</x-nav-link>
-                        <x-nav-link href="/contact" :current="request()->is('contact')">Contact</x-nav-link>
+                        <x-nav-link href="/about" :current="request()->is('contact')">About</x-nav-link>
                     </div>
                 </div>
             </div>

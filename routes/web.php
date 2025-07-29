@@ -38,8 +38,8 @@ Route::get('/category/{category:slug}', function (Category $category) {
     ]);
 });
 
-Route::get('/contact', function () {
-    return view('contact', ['title' => 'Contact Us']);
+Route::get('/about', function () {
+    return view('about', ['title' => 'About Us']);
 });
 
 // sub blog
